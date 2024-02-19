@@ -31,6 +31,6 @@ urlpatterns = [
     path('logout/',views.logout),
     path('adminmain/',views.adminmain),
     path('detail/<int:messageindex>/',views.detail),
-    path('detail/<int:messageindex>/<str:edittype>',views.detail),
+    path('detail/<int:messageindex>/<str:edittype>/',views.detail),
     
 ]

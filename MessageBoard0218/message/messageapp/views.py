@@ -97,10 +97,11 @@ def detail(request,messageindex = None , edittype=None):
         time = unit.btime
         content = unit.bcontent
     elif edittype == "1":
-        unit.bsubject = request.POST.get('boardsubject','')
-        unit.content = request.POST.get('boardcontent','')
+
         unit.bresponse = request.POST.get('boardresponse','')
         unit.save()
         return redirect('/adminmain/')
 
     return render(request, 'detail.html', locals())
+
+
