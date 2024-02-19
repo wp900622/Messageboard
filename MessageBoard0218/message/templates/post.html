@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <form action="." method="POST" class="form" name="form1">
+        {% csrf_token %}
+        <table width="100%" class="table">
+            <tr>
+                <th valign="baseline" align="right">標題</th>
+                <td valign="baseline">{{postform.boardsubject}}</td>
+            </tr>
+            <tr>
+                <th align="right" valign="baseline">姓名</th>
+                <td valign="baseline">{{postform.boardname}}</td>
+            </tr>
+            <tr>
+                <th align="right" valign="baseline">性別</th>
+                <td valign="baseline">
+                    <input  name="boardgender" id="boardgender" type="radio" value="m" checked="checked"/>男生
+                    <input  name="boardgender" id="boardgender2" type="radio" value="f" />女生
+                </td>
+            </tr>
+            <tr>
+                <th align="right" valign="baseline">電子郵件</th>
+                <td valign="baseline">{{postform.boardEmail}}</td>
+            </tr>
+            <tr>
+                <th align="right" valign="baseline">內容</th>
+                <td valign="baseline">{{postform.boardcontent}}</td>
+            </tr>
+            <tr>
+                <th align="right" valign="baseline">內容</th>
+                <td valign="baseline">{{postform.captcha}}</td>
+            </tr>
+            <tr>
+                <td class="align-middle" valign="baseline">
+                    <button type="submit" class="btn btn-primary md-3 lg-3">送出</button>
+                    <button type="reset" class="btn btn-primary md-3 lg-3">重設</button>
+                </td>
+            </tr>
+        </table>
+        <span>{{message}}</span>
+    </form>
+{% endblock %}

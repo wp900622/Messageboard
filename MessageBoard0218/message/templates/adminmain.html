@@ -1,0 +1,42 @@
+{% extends "baseadmin.html" %}
+{% load static %}
+{% block title %}
+<title>網站留言板-管理留言</title>
+{% endblock %}
+{% block content %}
+   
+    {% for unit in boardunits %}
+        <div class="card">
+            <div class="card-head text-center">
+                <p class="text-center">{{unit.bsubject}}</p>
+                <p></p>
+                <p>{{ unit.bcontent }}</p>
+             
+            </div>
+            <div class="card-body text-center">
+                {% if unit.bresponse != '' %}
+                    <p>版主回覆:{{unit.bresponse}}</p>
+                {% endif %}
+            </div>
+            <p align="right">{{unit.bname}} {{unit.btime}} 
+                {% if unit.bemail != "" %}
+                    <a href="mailto:{{unit.bmail}}" target="_blank">回覆</a>
+                {% endif %}
+            </p>
+            <a href="/detail/{{ unit.id }}/" class="stretched-link"></a>
+        </div>
+        {% empty %}
+            <div class="container">
+                <p>目前沒有資料歡迎留言</p>
+            </div>        
+    {% endfor %}
+    <div class="text-center">
+        {% if currentpage > 1%}
+                <a class="btn btn-primary" href="/index/prev/">上一頁</a>
+        {% endif %}
+        {% if currentpage < totpage %}
+                <a class="btn btn-primary" href="/index/next/">下一頁</a>
+        {% endif %}
+    </div>
+            
+{% endblock %}

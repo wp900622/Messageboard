@@ -1,0 +1,26 @@
+{% extends "baseadmin.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <form action="./{{ messageindex }}/1/" method="post" name="form1">
+            {% csrf_token %}
+            <table class="table" valign="baseline">
+                <tr>
+                    <th>標題</th>
+                    <td><input type="text" name="boardsubject" value={{ subject }} /></td>
+                </tr>
+                <tr>
+                    <th>內容</th>
+                    <td><textarea class="w-sm-125 h-sm-125 w-lg-200 h-lg-200" type="text" name="boardcontent"  >{{ content }}</textarea></td>
+                    
+                </tr>
+                <tr>
+                    <th>回覆</th>
+                    
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}

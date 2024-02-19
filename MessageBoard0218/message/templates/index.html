@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+<title>網站留言板</title>
+{% endblock %}
+{% block twomenu %}
+    <a class="btn btn-outline-primary" href="/post/">我要留言</a>
+    <a class="btn btn-outline-primary" href="/login">版主管理</a>
+{% endblock %}
+
+{% block content %}
+   
+    {% for unit in boardunits %}
+        <div class="card md-3">
+            <div class="card-head">
+                <p class="text-center">{{unit.bsubject}}</p>
+                <p></p>
+                <p class="text-center">{{ unit.bcontent }}</p>
+             
+            </div>
+            <div class="card-body">
+                {% if unit.bresponse != '' %}
+                    <p>版主回覆:{{unit.bresponse}}</p>
+                {% endif %}
+            </div>
+            <p align="right">{{unit.bname}} {{unit.btime}} 
+                {% if unit.bemail != "" %}
+                    <a href="mailto:{{unit.bmail}}" target="_blank">回覆</a>
+                {% endif %}
+            </p>
+           
+        </div>
+        {% empty %}
+            <div class="container">
+                <p>目前沒有資料歡迎留言</p>
+            </div>        
+    {% endfor %}
+    <div class="text-center">
+        {% if currentpage >= 1%}
+                <a class="btn btn-primary"  href="/index/prev/">上一頁</a>
+        {% endif %}
+        {% if currentpage < totpage %}
+                <a class="btn btn-primary"  href="/index/next/">下一頁</a>
+        {% endif %}
+    </div>       
+{% endblock %}
